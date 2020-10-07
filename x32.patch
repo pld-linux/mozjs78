@@ -40,7 +40,8 @@ diff -ur mozjs-60.1.0/python/mozbuild/mozbuild/configure/constants.py mozjs-60.1
  CPU_preprocessor_checks = OrderedDict((
 +    ('x32', '__x86_64__ && __ILP32__'),
      ('x86', '__i386__ || _M_IX86'),
-     ('x86_64', '__x86_64__ || _M_X64'),
+-    ('x86_64', '__x86_64__ || _M_X64'),
++    ('x86_64', '(__x86_64__ && __ILP64__) || _M_X64'),
      ('arm', '__arm__ || _M_ARM'),
 --- firefox-68.7.0/js/src/vm/BigIntType.cpp~	2020-04-03 21:29:59.000000000 +0200
 +++ firefox-68.7.0/js/src/vm/BigIntType.cpp	2020-05-01 11:22:53.296439915 +0200
@@ -53,3 +54,16 @@ diff -ur mozjs-60.1.0/python/mozbuild/mozbuild/configure/constants.py mozjs-60.1
    Digit quotient;
    Digit rem;
    __asm__("divq  %[divisor]"
+--- firefox-78.2.0/js/src/gc/GC.cpp.orig	2020-08-17 20:33:37.000000000 +0200
++++ firefox-78.2.0/js/src/gc/GC.cpp	2020-10-07 21:30:17.245896073 +0200
+@@ -291,8 +291,10 @@
+               "CellFlagBitsReservedForGC should support LifoAlloc");
+ static_assert(CellAlignBytes >= MinFirstWordAlignment,
+               "CellFlagBitsReservedForGC should support gc::Cell");
++#ifndef JS_CODEGEN_NONE
+ static_assert(js::jit::CodeAlignment >= MinFirstWordAlignment,
+               "CellFlagBitsReservedForGC should support JIT code");
++#endif
+ static_assert(js::gc::JSClassAlignBytes >= MinFirstWordAlignment,
+               "CellFlagBitsReservedForGC should support JSClass pointers");
+ 
