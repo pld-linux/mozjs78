@@ -6,7 +6,7 @@ Summary:	SpiderMonkey 78 - JavaScript implementation
 Summary(pl.UTF-8):	SpiderMonkey 78 - implementacja języka JavaScript
 Name:		mozjs78
 Version:	78.2.0
-Release:	1
+Release:	2
 License:	MPL v2.0
 Group:		Libraries
 #Source0:	http://ftp.gnome.org/pub/gnome/teams/releng/tarballs-needing-help/mozjs/mozjs-%{version}.tar.bz2
@@ -27,7 +27,7 @@ BuildRequires:	libstdc++-devel >= 6:4.4
 BuildRequires:	nspr-devel >= 4.25
 BuildRequires:	perl-base >= 1:5.6
 BuildRequires:	pkgconfig
-BuildRequires:	python3 >= 1:3.2
+BuildRequires:	python3 >= 1:3.8.5-3
 BuildRequires:	python3-virtualenv >= 1.9.1-4
 BuildRequires:	readline-devel
 BuildRequires:	rpm-perlprov
