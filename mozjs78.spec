@@ -17,6 +17,7 @@ Patch1:		system-virtualenv.patch
 Patch2:		include-configure-script.patch
 Patch3:		x32.patch
 Patch4:		%{name}-x32-rust.patch
+Patch5:		arm.patch
 URL:		https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey
 BuildRequires:	autoconf2_13 >= 2.13
 BuildRequires:	cargo
@@ -36,7 +37,7 @@ BuildRequires:	rust >= 1.41.0
 BuildRequires:	zlib-devel >= 1.2.3
 Requires:	nspr >= 4.25
 Requires:	zlib >= 1.2.3
-ExclusiveArch:	%{x8664} %{ix86} x32 aarch64
+ExclusiveArch:	%{x8664} %{ix86} x32 aarch64 armv6hl armv7hl armv7hnl
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -76,6 +77,7 @@ Pliki nagłówkowe do biblioteki JavaScript.
 %ifarch x32
 %patch4 -p1
 %endif
+%patch5 -p1
 
 %build
 export PYTHON="%{__python}"
