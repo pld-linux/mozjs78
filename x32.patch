@@ -34,7 +34,7 @@ diff -ur mozjs-60.1.0/python/mozbuild/mozbuild/configure/constants.py mozjs-60.1
  }
  
  CPU = EnumString.subclass(*CPU_bitness.keys())
-@@ -73,6 +74,7 @@
+@@ -73,8 +74,9 @@
  
  # The order of those checks matter
  CPU_preprocessor_checks = OrderedDict((
@@ -43,6 +43,8 @@ diff -ur mozjs-60.1.0/python/mozbuild/mozbuild/configure/constants.py mozjs-60.1
 -    ('x86_64', '__x86_64__ || _M_X64'),
 +    ('x86_64', '(__x86_64__ && __LP64__) || _M_X64'),
      ('arm', '__arm__ || _M_ARM'),
+     ('aarch64', '__aarch64__ || _M_ARM64'),
+     ('ia64', '__ia64__'),
 --- firefox-68.7.0/js/src/vm/BigIntType.cpp~	2020-04-03 21:29:59.000000000 +0200
 +++ firefox-68.7.0/js/src/vm/BigIntType.cpp	2020-05-01 11:22:53.296439915 +0200
 @@ -263,7 +263,7 @@
