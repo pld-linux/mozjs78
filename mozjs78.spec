@@ -35,6 +35,8 @@ BuildRequires:	readline-devel
 BuildRequires:	rpm-perlprov
 BuildRequires:	rpmbuild(macros) >= 1.294
 BuildRequires:	rust >= 1.41.0
+BuildRequires:	tar >= 1:1.22
+BuildRequires:	xz
 BuildRequires:	zlib-devel >= 1.2.3
 Requires:	nspr >= 4.25
 Requires:	zlib >= 1.2.3
